@@ -1,0 +1,22 @@
+
+admin   spoker
+
+project name point calling point->
+
+admin login 
+
+---> add spoker     --> 
+---> contact Add    --> import excel --->
+
+->assign contact
+->unassing
+
+Spoker Login Dashboard
+
+->fallow up     -> New Folowup + past + Today  +Future
+->assign contact
+->My Conact Favorite
+->Don't Call
+
+status  ->Don't Call
+enum
