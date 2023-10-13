@@ -13,26 +13,6 @@ use App\Http\Middleware\IsLoggedIn;
 |
 */
 
-
-// Spoker pages
-    Route::get('/', 'Spoker\SpokerController@index');
-    Route::post('/login', 'Spoker\Auth\loginController@login');
-    Route::get('/logout', 'Spoker\Auth\logOutController@logout');
-
-    // Dashboard
-    Route::get('/dashboard', 'Spoker\SpokerController@spoker');
-
-    // Assign Contact
-    Route::get('/assign-contacts', 'Spoker\AssignContactsController@assign');
-    
-    // followup Contact
-    Route::get('/followup-contacts', 'Spoker\FollowupController@followUp');
-    Route::get('/past-followup-contacts', 'Spoker\FollowupController@pastFollowUp');
-    Route::get('/today-followup-contacts', 'Spoker\FollowupController@todayFollowUp');
-    Route::get('/future-followup-contacts', 'Spoker\FollowupController@futureFollowUp');
-
-
-
 // Start Admin Pannel
 
     // login page
@@ -68,3 +48,25 @@ use App\Http\Middleware\IsLoggedIn;
         Route::get('/admin/assign-contacts', 'Admin\AssignContactsController@assign');
         Route::get('/admin/unassign-contacts', 'Admin\UnassignContactsController@unassign');
     // end Assign Contacts
+
+
+
+// Spoker pages
+    Route::get('/', 'Spoker\SpokerController@index');
+    Route::post('/login', 'Spoker\Auth\loginController@login');
+    Route::get('/logout', 'Spoker\Auth\logOutController@logout');
+
+    // Dashboard
+    Route::get('/dashboard', 'Spoker\SpokerController@spoker');
+
+    // Assign Contact
+    Route::get('/assign-contacts', 'Spoker\AssignContactsController@assign');
+
+    // followup Contact
+    Route::get('/followup-contacts', 'Spoker\FollowupController@followUp');
+    Route::get('/past-followup-contacts', 'Spoker\FollowupController@pastFollowUp');
+    Route::get('/today-followup-contacts', 'Spoker\FollowupController@todayFollowUp');
+    Route::get('/future-followup-contacts', 'Spoker\FollowupController@futureFollowUp');
+
+
+Route::post('/followup-contacts/store', 'Spoker\FollowupController@followUpStore');
