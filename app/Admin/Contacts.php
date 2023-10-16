@@ -8,7 +8,7 @@ class Contacts extends Model
 {
     protected $fillable = ["name","mobile","email","location","contact_type","source","website","additional_info","status"];
 
-    protected $table = 'contacts';
+    protected $table = 'cp_contacts';
 
     protected $primaryKey = 'id';
 }
