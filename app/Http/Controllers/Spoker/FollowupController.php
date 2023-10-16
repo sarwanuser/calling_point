@@ -57,7 +57,8 @@ class FollowupController extends Controller
             if ($data) {
                 $data->follow_up_date  = date('Y-m-d', strtotime($request->follow_up_date));  
                 $data->status    = $request->status;    
-                $data->favorite_status     = $request->favorite_status;
+                $data->favorite_status  = $request->favorite_status;
+                $data->follow_up        = 'DONE';
                 $data->update();
 
 

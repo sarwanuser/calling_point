@@ -13,13 +13,15 @@
             <li class="nav-item">
               <a class="nav-link" data-bs-toggle="collapse" href="#ui-team" aria-expanded="false" aria-controls="ui-basic">
                 <i class="menu-icon mdi mdi-headset"></i>
-                  <span class="menu-title">Assign Contact List</span>
+                  <span class="menu-title">Contacts List</span>
                 <i class="menu-arrow"></i>
               </a>
 
               <div class="collapse" id="ui-team">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item"><a class="nav-link" href="{{url('/assign-contacts')}}">Assign Contact List</a></li>
+                  <li class="nav-item"><a class="nav-link" href="{{url('/favorite-contacts')}}">Favorite Contact List</a></li>
+                  <li class="nav-item"><a class="nav-link" href="{{url('/donot-call-contacts')}}">Do Not Call Contact List</a></li>
                 </ul>
               </div>
             </li>

@@ -47,6 +47,7 @@ use App\Http\Middleware\IsLoggedIn;
     // start Assign Contacts
         Route::get('/admin/assign-contacts', 'Admin\AssignContactsController@assign');
         Route::get('/admin/unassign-contacts', 'Admin\UnassignContactsController@unassign');
+        Route::get('/admin/day-spoker-report', 'Admin\DaySpokerReportController@daySpokerReport');
     // end Assign Contacts
 
 
@@ -60,7 +61,9 @@ use App\Http\Middleware\IsLoggedIn;
     Route::get('/dashboard', 'Spoker\SpokerController@spoker');
 
     // Assign Contact
-    Route::get('/assign-contacts', 'Spoker\AssignContactsController@assign');
+    Route::get('/assign-contacts', 'Spoker\ContactsController@assign');
+    Route::get('/favorite-contacts', 'Spoker\ContactsController@favorite');
+    Route::get('/donot-call-contacts', 'Spoker\ContactsController@doNotCall');
 
     // followup Contact
     Route::get('/followup-contacts', 'Spoker\FollowupController@followUp');
@@ -68,5 +71,5 @@ use App\Http\Middleware\IsLoggedIn;
     Route::get('/today-followup-contacts', 'Spoker\FollowupController@todayFollowUp');
     Route::get('/future-followup-contacts', 'Spoker\FollowupController@futureFollowUp');
 
-
-Route::post('/followup-contacts/store', 'Spoker\FollowupController@followUpStore');
+    // follow up contacts
+    Route::post('/followup-contacts/store', 'Spoker\FollowupController@followUpStore');

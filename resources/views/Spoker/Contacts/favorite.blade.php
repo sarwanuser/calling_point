@@ -1,6 +1,6 @@
 @extends('Spoker.template.base')
 
-@section('title', 'Spoker - All Assign Contact')
+@section('title', 'Spoker - All Favorite Contact')
 
 @section('styles')
 @endsection
@@ -14,18 +14,15 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col-lg-5 col-md-5 col-5">
-                      <h4 class="card-title">All Assign Contacts</h4>
+                      <h4 class="card-title">All Favorite Contacts</h4>
                     </div>
                     <div class="col-lg-7 col-md-7 col-7">
                       @if(Session::has('Failed'))<span id="Massage" style="color: red;" min-height="10px" max-height="10px"> &nbsp; {{Session::get('Failed')}}</span>@endif
                       @if(Session::has('Success'))<span id="Massage" style="color: green;" min-height="10px" max-height="10px"> &nbsp; {{Session::get('Success')}}</span>@endif
                     </div>
                   </div>
-                  <!-- <p class="card-description">
-                    Add class <code>.table-striped</code>
-                  </p> -->
                   <br>
-                  <form class="form-sample" action="{{url('/assign-contacts')}}" method="get">
+                  <form class="form-sample" action="{{url('/favorite-contacts')}}" method="get">
                     @csrf
                     <div class="row">
                       <div class="col-md-5">
@@ -60,7 +57,7 @@
 
                       <div class="col-md-2">
                         <button type="submit" class="btn btn-primary me-2" style="padding:8px;" name="search">Search</button>
-                        <a href="{{url('/assign-contacts')}}" class="btn btn-warning" style="padding:8px;">Reset</a>
+                        <a href="{{url('/favorite-contacts')}}" class="btn btn-warning" style="padding:8px;">Reset</a>
                       </div>
                   </form>
                   <div class="table-responsive">

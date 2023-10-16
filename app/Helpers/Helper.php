@@ -48,3 +48,30 @@ if (!function_exists('getFollowUpDTL')) {
         return @$data;
     }
 }
+
+
+// get No Of Assign Contact
+if (!function_exists('getNoOfAssignContact')) {
+    function getNoOfAssignContact($spoker_id, $from_date, $to_date)
+    {   
+        // dd($spoker_id, $from_date, $to_date);
+        $from = date("Y-m-d 00:00:00", strtotime($from_date)); 
+        $to   = date("Y-m-d 00:00:00", strtotime($to_date));
+        @$data = AssignContacts::where('spoker_id', $spoker_id)->whereBetween('updated_at', [$from, $to])->count();
+        // dd($data);
+        return @$data;
+    }
+}
+
+// get No Of Assign Contact
+if (!function_exists('getNoOfFolUpContact')) {
+    function getNoOfFolUpContact($spoker_id, $from_date, $to_date)
+    {   
+        // dd($spoker_id, $from_date, $to_date);
+        $from = date("Y-m-d 00:00:00", strtotime($from_date)); 
+        $to   = date("Y-m-d 00:00:00", strtotime($to_date));
+        @$data = AssignContacts::where('spoker_id', $spoker_id)->where('follow_up', 'DONE')->whereBetween('updated_at', [$from, $to])->count();
+        // dd($data);
+        return @$data;
+    }
+}

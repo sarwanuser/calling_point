@@ -59,6 +59,7 @@
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item"><a class="nav-link" href="{{url('/admin/contacts')}}">Contacts</a></li>
                   <li class="nav-item"><a class="nav-link" href="{{url('/admin/assign-contacts')}}">Assign Contacts</a></li>
+                  <li class="nav-item"><a class="nav-link" href="{{url('/admin/day-spoker-report')}}">Day/Spoker Report</a></li>
                 </ul>
               </div>
             </li>
