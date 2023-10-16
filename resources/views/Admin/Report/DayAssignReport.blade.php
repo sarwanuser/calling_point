@@ -39,7 +39,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label" style="padding-top: 1px;text-align: right;">To Date</label>
                                 <div class="col-sm-8">
-                                   <input type="date" class="form-control" name="to_date" id="to_date" @if(Request::get('to_date')) value="{{Request::get('to_date')}}" min="{{Request::get('from_date')}}" @else  value="{{date('Y-m-d')}}" min="{{date('Y-m-01')}}" @endif required>
+                                   <input type="date" class="form-control" name="to_date" id="to_date" @if(Request::get('to_date')) value="{{Request::get('to_date')}}" min="{{Request::get('from_date')}}" @else  value="{{date('Y-m-t')}}" min="{{date('Y-m-01')}}" @endif required>
                                 </div>
                             </div>
                         </div>
