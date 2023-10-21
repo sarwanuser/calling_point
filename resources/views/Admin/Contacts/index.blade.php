@@ -18,20 +18,73 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col-lg-4 col-md-4 col-4">
-                      <h4 class="card-title">All Contact</h4>
+                      <h4 class="card-title">All Contacts</h4>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-6">
+                    <div class="col-lg-5 col-md-5 col-5">
                       @if(Session::has('Failed'))<span id="Massage" style="color: red;" min-height="10px" max-height="10px"> &nbsp; {{Session::get('Failed')}}</span>@endif
                       @if(Session::has('Success'))<span id="Massage" style="color: green;" min-height="10px" max-height="10px"> &nbsp; {{Session::get('Success')}}</span>@endif
                     </div>
-                    <div class="col-lg-2 col-md-2 col-2" style="text-align: right;">
-                      <a href="#" title="Click for import excel" data-toggle="modal" data-target="#exampleModal"><i class="mdi mdi-file-excel" style="color: #52CDFF; font-size: 35px;"></i></a>
+                    <div class="col-lg-3 col-md-3 col-3" style="text-align: right;">
+                      <button class="btn btn-success" title="Click for import excel" data-toggle="modal" data-target="#exampleModal"style="margin-top: -25px;padding: 1px 5px;">Import Excel</button>
                       <a href="{{url('/admin/contacts/create')}}" title="Click for create page"><i class="mdi mdi-plus-box"></i></a>
                     </div>
                   </div>
-                  <!-- <p class="card-description">
-                    Add class <code>.table-striped</code>
-                  </p> -->
+                  
+                  <form class="form-sample">
+                    @csrf
+                    <div class="row">
+                      <div class="col-md-3">
+                        <div class="form-group row">
+                          <label class="col-sm-4 col-form-label" style="padding-top: 1px;">Type</label>
+                          <div class="col-sm-8">
+                            <select class="form-control" name="contact_type" id="contact_type" required>
+                              <option value="">- Select Type -</option>
+                              <option value="%" @if(Request()->contact_type=='%'){{'selected'}}@endif>All</option>
+                              @foreach($contact_type as $contact_types)
+                                <option value="{{$contact_types->contact_type}}" @if(Request()->contact_type==$contact_types->contact_type){{'selected'}}@endif>{{$contact_types->contact_type}}</option>
+                              @endforeach
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-3">
+                        <div class="form-group row">
+                          <label class="col-sm-4 col-form-label" style="padding-top: 1px;text-align: right;">Location</label>
+                          <div class="col-sm-8">
+                            <select class="form-control" name="location" id="location" required>
+                              <option value="">- Select Location -</option>
+                              <option value="%" @if(Request()->location=='%'){{'selected'}}@endif>All</option>
+                              @foreach($location as $locations)
+                                <option value="{{$locations->location}}" @if(Request()->location == $locations->location){{'selected'}}@endif>{{$locations->location}}</option>
+                              @endforeach
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-3">
+                        <div class="form-group row">
+                          <label class="col-sm-4 col-form-label" style="padding-top: 1px;text-align: right;">Source</label>
+                          <div class="col-sm-8">
+                            <select class="form-control" name="source" id="source" required>
+                              <option value="">- Select Source -</option>
+                              <option value="%" @if(Request()->source=='%'){{'selected'}}@endif>All</option>
+                              @foreach($source as $sources)
+                                <option value="{{$sources->source}}" @if(Request()->source == $sources->source){{'selected'}}@endif>{{$sources->source}}</option>
+                              @endforeach
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-1"></div>
+                      <div class="col-md-2">
+                        <button type="submit" class="btn btn-primary me-2" style="padding:8px;" name="search">Search</button>
+                        <a href="{{url('/admin/assign-contacts')}}" class="btn btn-warning" style="padding:8px;">Reset</a>
+                      </div>
+                  </form>
+
                   <div class="table-responsive">
                     <table class="table table-hover" id="datatablesSimple">
                       <thead>
@@ -83,7 +136,7 @@
                           @csrf
                           <div class="modal-content" style="background-color: white;text-align: center;">
                             <div class="modal-header">
-                              <h4 class="modal-title" id="exampleModalLabel"  style="color: black;">Import Contact Form Excel Sheet</h4>
+                              <h4 class="modal-title" id="exampleModalLabel"  style="color: black;">Import Contact By Excel Sheet</h4>
                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                               </button>

@@ -3,6 +3,7 @@
 use App\Admin\Spokers;
 use App\Admin\AssignContacts;
 use App\Admin\FollowUpContacts;
+use App\Admin\Contacts;
 
 if (!function_exists('getSpokerName')) {
     function getSpokerName($id)
@@ -75,3 +76,58 @@ if (!function_exists('getNoOfFolUpContact')) {
         return @$data;
     }
 }
+
+
+// admin dashboard
+    // get total No Of All Contacts
+    if (!function_exists('getNoOfTotalContactAdmin')) {
+        function getNoOfTotalContactAdmin()
+        {   
+            @$data = Contacts::where('status', 'ACTIVE')->count();
+            // dd($data);
+            return @$data;
+        }
+    }
+
+
+    // get total No Of unassign Contact
+    if (!function_exists('getNoOfTotalUnassignAdmin')) {
+        function getNoOfTotalUnassignAdmin()
+        {   
+            @$data = Contacts::where('assigned_status', 'UNASSIGNED')->where('status', 'ACTIVE')->count();
+            // dd($data);
+            return @$data;
+        }
+    }
+
+
+    // get total No Of assign Contact
+    if (!function_exists('getNoOfTotalAssignAdmin')) {
+        function getNoOfTotalAssignAdmin()
+        {   
+            @$data = Contacts::where('assigned_status', 'ASSIGNED')->where('status', 'ACTIVE')->count();
+            // dd($data);
+            return @$data;
+        }
+    }
+
+
+    // get total No Of unassign Contact
+    if (!function_exists('getNoOfTotalSpokers')) {
+        function getNoOfTotalSpokers()
+        {   
+            @$data = Spokers::where('status', 'ACTIVE')->count();
+            // dd($data);
+            return @$data;
+        }
+    }
+
+    // get total No Of unassign Contact
+    if (!function_exists('getNoOfTotalTodayFollowUpAdmin')) {
+        function getNoOfTotalTodayFollowUpAdmin()
+        {   
+            @$data = AssignContacts::where('status','FOLLOWUP')->where('follow_up_date', '=', date('Y-m-d'))->count();
+            // dd($data);
+            return @$data;
+        }
+    }

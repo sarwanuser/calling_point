@@ -29,16 +29,16 @@
     <style>
         .auth.px-0 {
             /* background: url(../assets/img/1.png); */
-            background: url(../assets/admin/images/home/back-2.png);
+            background: url(../assets/spoker/spoker-back.webp);
             background-repeat: no-repeat;
             background-size: 100% 100%;
         }
         .auth-form-light{
             background-color: #191c24 !important;
-            opacity: 0.95;
+            opacity: 0.85;
         }
         .form-control{
-            color: green !important;
+            color: white !important;
         }
     </style>
   </head>

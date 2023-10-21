@@ -14,7 +14,7 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col-lg-6 col-md-6 col-6">
-                    <h4 class="card-title">Update Spokers</h4>
+                    <h4 class="card-title">Update Spoker</h4>
                   </div>
                   <div class="col-lg-6 col-md-6 col-6" style="text-align: right;">
                     <a href="{{url('/admin/spokers')}}" title="Click for return back"><i class="mdi mdi-arrow-left-bold-circle"></i></a>
@@ -22,7 +22,7 @@
                 </div>
                 <form class="form-sample" id="myForm">
                   <p class="card-description">
-                    Spokers Details
+                    Spoker Details
                   </p>
                   <div class="row">
                   <div class="col-md-6">

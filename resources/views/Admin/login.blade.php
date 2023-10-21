@@ -38,7 +38,7 @@
             opacity: 0.95;
         }
         .form-control{
-            color: green !important;
+            color: white !important;
         }
     </style>
   </head>
@@ -58,7 +58,7 @@
                   <form class="pt-3" action="{{url('/admin/login')}}" method="POST">
                     @csrf
                       <div class="form-group">
-                        <input type="text" class="form-control form-control-lg" name="user" placeholder="Employee Code" required>
+                        <input type="text" class="form-control form-control-lg" name="user" placeholder="Username" required>
                       </div>
 
                       <div class="form-group">

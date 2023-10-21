@@ -10,10 +10,35 @@ use App\Imports\ImportContacts;
 
 class ContactsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {   
-        $data = Contacts::orderby('created_at','DESC')->get();
-        return view('Admin.Contacts.index', compact('data'));
+        $data = [];
+        $contact_type = Contacts::select('contact_type')->where('contact_type', '!=', '')->orderby('contact_type', 'ASC')->get()->unique('contact_type');
+                        // ->where('status', 'ACTIVE')
+        $location = Contacts::select('location')->where('location', '!=', '')->orderby('location', 'ASC')->get()->unique('location');
+        $source = Contacts::select('source')->where('source', '!=', '')->orderby('source', 'ASC')->get()->unique('source');
+        
+        if ($request->has('search')) {
+            $data = Contacts::orderby('created_at','DESC')->get();
+
+            // filter contact type 
+            if ($request->contact_type != '%') {
+                $data = $data->where('contact_type', $request->contact_type);
+            }
+
+            // filter source 
+            if ($request->source != '%') {
+                $data = $data->where('source', $request->source);
+            }
+
+            // filter location 
+            if ($request->location != '%') {
+                $data = $data->where('location', $request->location);
+            }
+        }
+        // dd($contact_type, $source);
+
+        return view('Admin.Contacts.index', compact('data', 'contact_type', 'location', 'source'));
     }
 
     public function create()

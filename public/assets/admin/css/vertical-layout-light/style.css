@@ -30779,17 +30779,23 @@ div.tagsinput span.tag a {
 }
 
 .mdi-table-edit{
-  color: green;
+  background-color: #9444bd;
+  color: white;
   font-size: 15px;
   cursor: pointer;
   font-weight: bold;
+  border-radius: 4px;
+  padding: 3px 2px 0px 3px;
 }
 
 .mdi-delete-forever{
-  color: red;
+  background-color: #fb6d6d;
+  color: white;
   font-size: 15px;
   cursor: pointer;
   font-weight: bold;
+  border-radius: 4px;
+  padding: 3px 2px 0px 3px;
 }
 
 #alertMSG{
