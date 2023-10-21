@@ -56,7 +56,7 @@
               <div class="card">
                 <div class="card-body">
                   <div class="container">
-                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                    <div id="myCarousel" class="carousel slide" data-ride="carousel" data-pause="hover">
                       
                       <!-- Wrapper for slides -->
                       <div class="carousel-inner">
@@ -100,7 +100,7 @@
 
                                   <div class="col-md-4 col-lg-4">
                                     <input type="hidden" name="contact_id" value="{{$AssignContact->id}}">
-                                    <span class="con_follow_lable">Comment Select</span>  
+                                    <span class="con_follow_lable">Enter Comment </span>  
                                     <br><textarea name="comment" id="comment_{{$AssignContact->id}}" cols="30" rows="7"></textarea>
 
                                     <div class="row">

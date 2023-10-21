@@ -79,11 +79,22 @@ if (!function_exists('getNoOfFolUpContact')) {
 
 
 // admin dashboard
-    // get total No Of All Contacts
+    // get total No Of All Contacts by admin
     if (!function_exists('getNoOfTotalContactAdmin')) {
         function getNoOfTotalContactAdmin()
         {   
             @$data = Contacts::where('status', 'ACTIVE')->count();
+            // dd($data);
+            return @$data;
+        }
+    }
+
+    // get total No Of All Contacts by spoker
+    if (!function_exists('getNoOfTotalContactSpoker')) {
+        function getNoOfTotalContactSpoker()
+        {   
+            $user = Session()->get('users');
+            @$data = AssignContacts::where('spoker_id', $user->id)->count();
             // dd($data);
             return @$data;
         }
