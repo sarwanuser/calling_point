@@ -23,6 +23,11 @@ class loginController extends Controller
         if ($data = Spokers::where('email', $email)->first()) {
             $pass = Hash::check($psw, $data->password);
             if ($pass) {
+                // check for user is Inactive
+                if ($data->status=='INACTIVE') {
+                    return back()->with('Failed', 'Your ID is Inactive by Admin');
+                }
+                
                 Session::forget('users');
                 session(['users' => $data]);
                 return redirect('/dashboard')->with(['status'=>'1', 'msg' =>"Login Successfully !"]);
