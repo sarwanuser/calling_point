@@ -127,6 +127,7 @@
                                           <option value="normal" @if($AssignContact->favorite_status == 'normal') {{'selected'}} @endif>Normal</option>
                                           <option value="favorite" @if($AssignContact->favorite_status == 'favorite') {{'selected'}} @endif>Favorite</option>
                                           <option value="unfavorite" @if($AssignContact->favorite_status == 'unfavorite') {{'selected'}} @endif>Unfavorite</option>
+                                          <option value="don't_call" @if($AssignContact->favorite_status == "don't_call") {{'selected'}} @endif>Don't Call</option>
                                         </select>
                                       </div>
 

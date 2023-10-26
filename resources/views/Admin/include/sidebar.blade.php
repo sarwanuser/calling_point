@@ -64,6 +64,22 @@
               </div>
             </li>
           <!-- Start Contacts -->
+
+          <!-- Start Don't Call -->
+          <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="collapse" href="#ui-donot-call" aria-expanded="false" aria-controls="ui-basic">
+                <i class="menu-icon mdi mdi-cellphone-iphone"></i>
+                  <span class="menu-title">Don't Call</span>
+                <i class="menu-arrow"></i>
+              </a>
+
+              <div class="collapse" id="ui-donot-call">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"><a class="nav-link" href="{{url('/admin/donot-call')}}">Don't Call</a></li>
+                 </ul>
+              </div>
+            </li>
+          <!-- Start Don't Call -->
         </ul>
       </nav>
     <!-- partial -->

@@ -55,13 +55,14 @@ class FollowupController extends Controller
             $user = Session()->get('users');
             $data = AssignContacts::find($request->contact_id);
             if ($data) {
+                // code for update assign contact
                 $data->follow_up_date  = date('Y-m-d', strtotime($request->follow_up_date));  
                 $data->status    = $request->status;    
                 $data->favorite_status  = $request->favorite_status;
                 $data->follow_up        = 'DONE';
                 $data->update();
 
-
+                // code for follow up
                 $follow = new FollowUpContacts();
 
                 $follow->assign_contact_id     = $request->contact_id;
@@ -71,7 +72,11 @@ class FollowupController extends Controller
                 $follow->flag    = '1';
                 $follow->save();
                 
-                
+                // code for don't call and update in concat master
+                $donot_call = Contacts::find($data->contact_id);
+                $donot_call->donot_call        = 'R';
+                $donot_call->update();
+
                 // Commit the transaction
                 DB::commit();
                 return response()->json(['status'=>'1', 'msg' =>" Successfully Follow Up !", 'data'=>$data, 'new'=>@getFollowupContact('new'), 'past'=>@getFollowupContact('past'), 'today'=>@getFollowupContact('today'), 'future'=>@getFollowupContact('future')]);

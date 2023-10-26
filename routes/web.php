@@ -50,6 +50,11 @@ use App\Http\Middleware\IsLoggedIn;
         Route::get('/admin/day-spoker-report', 'Admin\DaySpokerReportController@daySpokerReport');
     // end Assign Contacts
 
+    // start Do Not Call
+        Route::get('/admin/donot-call', 'Admin\DoNotCallController@index');
+        Route::get('/admin/donot-call/approve-{id}', 'Admin\DoNotCallController@approve');
+        Route::get('/admin/donot-call/reject-{id}', 'Admin\DoNotCallController@reject');
+    // end Do Not Call
 
 
 // Spoker pages
