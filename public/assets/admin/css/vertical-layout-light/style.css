@@ -30778,7 +30778,7 @@ div.tagsinput span.tag a {
   padding-right: 8px;
 }
 
-.mdi-table-edit{
+.mdi-table-edit,.mdi-thumb-up-outline{
   background-color: #9444bd;
   color: white;
   font-size: 15px;
@@ -30788,7 +30788,7 @@ div.tagsinput span.tag a {
   padding: 3px 2px 0px 3px;
 }
 
-.mdi-delete-forever{
+.mdi-delete-forever,.mdi-thumb-down-outline{
   background-color: #fb6d6d;
   color: white;
   font-size: 15px;

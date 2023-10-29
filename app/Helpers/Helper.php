@@ -142,3 +142,13 @@ if (!function_exists('getNoOfFolUpContact')) {
             return @$data;
         }
     }
+
+    // get total No Of unassign Contact
+    if (!function_exists('checkDoNotApprove')) {
+        function checkDoNotApprove($id)
+        {   
+            @$data = Contacts::where('id', $id)->where('donot_call', 'A')->first();
+            // dd($id, $data);
+            return @$data;
+        }
+    }

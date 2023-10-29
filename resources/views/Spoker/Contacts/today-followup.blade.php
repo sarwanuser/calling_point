@@ -19,6 +19,9 @@
     .right.carousel-control{
       width: 12% !important;
     }
+    .form-control{
+      width: 250px !important;
+    }
   </style>
 @endsection
 @section('content')
@@ -73,80 +76,89 @@
                                 <form id="{{'myForm_'.$AssignContact->id}}">
 
                                 <div class="row">
-                                  <div class="col-md-4 col-lg-4">
+                                <div class="col-md-4 col-lg-4">
                                     <span class="con_follow_lable">Contact Number</span>  
-                                    <br><input type="text" name="" value="{{$AssignContact->mobile}}" id="" readonly>
+                                    <br><input type="text" class="form-control" readonly name="" value="{{$AssignContact->mobile}}" id="" readonly>
 
                                     <br><span class="con_follow_lable">Contact Name</span>
-                                    <br><input type="text" name="" value="{{$AssignContact->name}}" id="" readonly>
+                                    <br><input type="text" class="form-control" readonly name="" value="{{$AssignContact->name}}" id="" readonly>
                                     
                                     <br><span class="con_follow_lable">Contact Email</span>
-                                    <br><input type="text" name="" value="{{$AssignContact->email}}" id="" readonly>
+                                    <br><input type="text" class="form-control" readonly name="" value="{{$AssignContact->email}}" id="" readonly>
                                     
                                     <br><span class="con_follow_lable">Website</span>
-                                    <br><input type="text" name="" value="{{$AssignContact->website}}" id="" readonly>
+                                    <br><input type="text" class="form-control" readonly name="" value="{{$AssignContact->website}}" id="" readonly>
                                     
                                     <br><span class="con_follow_lable">Location</span>
-                                    <br><input type="text" name="" value="{{$AssignContact->location}}" id="" readonly>
+                                    <br><input type="text" class="form-control" readonly name="" value="{{$AssignContact->location}}" id="" readonly>
                                     
                                     <br><span class="con_follow_lable">Contact Type</span>
-                                    <br><input type="text" name="" value="{{$AssignContact->contact_type}}" id="" readonly>
+                                    <br><input type="text" class="form-control" readonly name="" value="{{$AssignContact->contact_type}}" id="" readonly>
                                     
                                     <br><span class="con_follow_lable">Additional Info</span>
-                                    <br><input type="text" name="" value="{{$AssignContact->additional_info}}" id="" readonly>
+                                    <br><input type="text" class="form-control" readonly name="" value="{{$AssignContact->additional_info}}" id="" readonly>
                                   </div>
 
-
-                                  <div class="col-md-4 col-lg-4">
-                                    <input type="hidden" name="contact_id" value="{{$AssignContact->id}}">
-                                    <span class="con_follow_lable">Enter Comment </span>  
-                                    <br><textarea name="comment" id="comment_{{$AssignContact->id}}" cols="30" rows="7"></textarea>
-
-                                    <div class="row">
-                                      <div class="col-md-6 col-lg-6">
-                                        <br><input class="validate invalid" required="" aria-required="true" id="follow_up_date_{{$AssignContact->id}}" type="date" name="follow_up_date" min="{{date('Y-m-d', strtotime('-1 day'))}}" value="{{ date('Y-m-d') }}">
-                                      </div>
-
-                                      <div class="col-md-6 col-lg-6">
-                                        <br>
-                                        <select name="status" class="select_status">
-                                          <option value="FOLLOWUP" @if($AssignContact->status == 'FOLLOWUP') {{'selected'}} @endif>FollowUp</option>
-                                          <option value="COMPLETE" @if($AssignContact->status == 'COMPLETE') {{'selected'}} @endif>COMPLETE</option>
-                                          <option value="CLOSE" @if($AssignContact->status == 'CLOSE') {{'selected'}} @endif>CLOSE</option>
-                                          {{--
-                                            <option value="INACTIVE" @if($AssignContact->status == 'INACTIVE') {{'selected'}} @endif>INACTIVE</option>
-                                            <option value="REQUEST" @if($AssignContact->status == 'REQUEST') {{'selected'}} @endif>REQUEST</option>
-                                            <option value="UPDATE" @if($AssignContact->status == 'UPDATE') {{'selected'}} @endif>UPDATE</option>
-                                          --}}
-                                          </select>
-                                      </div>
-
-                                      <div class="col-md-6 col-lg-6">
-                                        <br>
-                                        <select name="favorite_status" class="favorite_status">
-                                          <option value="normal" @if($AssignContact->favorite_status == 'normal') {{'selected'}} @endif>Normal</option>
-                                          <option value="favorite" @if($AssignContact->favorite_status == 'favorite') {{'selected'}} @endif>Favorite</option>
-                                          <option value="unfavorite" @if($AssignContact->favorite_status == 'unfavorite') {{'selected'}} @endif>Unfavorite</option>
-                                        </select>
-                                      </div>
-
-                                      <div class="col-md-6 col-lg-6">
-                                        <br>
-                                        @if($AssignContact->status == 'CLOSE')
-                                          <button class="btn waves-effect waves-light right" type="submit" name="action" id="add_followup" disabled>CLOSED
-                                            <i class="material-icons right">not_interested</i>
-                                          </button>
-                                        @elseif($AssignContact->status == 'INACTIVE')
-                                          <button class="btn waves-effect waves-light right" type="submit" name="action" id="add_followup" disabled>INACTIVE
-                                            <i class="material-icons right">not_interested</i>
-                                          </button>
-                                        @else
-                                          <a class="btn btn-primary" name="action" id="submit_btn_{{$AssignContact->id}}" onclick="followUpContact({{$AssignContact->id}})">Submit</a>
-                                        @endif</div>
+                                  @if(@checkDoNotApprove($AssignContact->contact_id))
+                                    <div class="col-md-4 col-lg-4" style="color:red; padding-top:30px;">
+                                      <span>
+                                        <b>Don't Call</b>
+                                      </span>
                                     </div>
+                                  @else
+                                    <div class="col-md-4 col-lg-4">
+                                      <input type="hidden" name="contact_id" value="{{$AssignContact->id}}">
+                                      <span class="con_follow_lable">Enter Comment </span>  
+                                      <br><textarea name="comment" id="comment_{{$AssignContact->id}}" cols="30" rows="7"></textarea>
 
-                                    <div class="col-md-12 col-lg-12" id="alertMSG_{{$AssignContact->id}}">&nbsp;</div>
-                                  </div>
+                                      <div class="row">
+                                        <div class="col-md-6 col-lg-6">
+                                          <br><input class="validate invalid" required="" aria-required="true" id="follow_up_date_{{$AssignContact->id}}" type="date" name="follow_up_date" min="{{date('Y-m-d', strtotime('-1 day'))}}" value="{{ date('Y-m-d') }}">
+                                        </div>
+
+                                        <div class="col-md-6 col-lg-6">
+                                          <br>
+                                          <select name="status" class="select_status">
+                                            <option value="FOLLOWUP" @if($AssignContact->status == 'FOLLOWUP') {{'selected'}} @endif>FollowUp</option>
+                                            <option value="COMPLETE" @if($AssignContact->status == 'COMPLETE') {{'selected'}} @endif>COMPLETE</option>
+                                            <option value="CLOSE" @if($AssignContact->status == 'CLOSE') {{'selected'}} @endif>CLOSE</option>
+                                            {{--
+                                              <option value="INACTIVE" @if($AssignContact->status == 'INACTIVE') {{'selected'}} @endif>INACTIVE</option>
+                                              <option value="REQUEST" @if($AssignContact->status == 'REQUEST') {{'selected'}} @endif>REQUEST</option>
+                                              <option value="UPDATE" @if($AssignContact->status == 'UPDATE') {{'selected'}} @endif>UPDATE</option>
+                                            --}}
+                                            </select>
+                                        </div>
+
+                                        <div class="col-md-6 col-lg-6">
+                                          <br>
+                                          <select name="favorite_status" class="favorite_status">
+                                            <option value="normal" @if($AssignContact->favorite_status == 'normal') {{'selected'}} @endif>Normal</option>
+                                            <option value="favorite" @if($AssignContact->favorite_status == 'favorite') {{'selected'}} @endif>Favorite</option>
+                                            <option value="unfavorite" @if($AssignContact->favorite_status == 'unfavorite') {{'selected'}} @endif>Unfavorite</option>
+                                            <option value="don't_call" @if($AssignContact->favorite_status == "don't_call") {{'selected'}} @endif>Don't Call</option>
+                                          
+                                          </select>
+                                        </div>
+
+                                        <div class="col-md-6 col-lg-6">
+                                          <br>
+                                          @if($AssignContact->status == 'CLOSE')
+                                            <button class="btn waves-effect waves-light right" type="submit" name="action" id="add_followup" disabled>CLOSED
+                                              <i class="material-icons right">not_interested</i>
+                                            </button>
+                                          @elseif($AssignContact->status == 'INACTIVE')
+                                            <button class="btn waves-effect waves-light right" type="submit" name="action" id="add_followup" disabled>INACTIVE
+                                              <i class="material-icons right">not_interested</i>
+                                            </button>
+                                          @else
+                                            <a class="btn btn-primary" name="action" id="submit_btn_{{$AssignContact->id}}" onclick="followUpContact({{$AssignContact->id}})">Submit</a>
+                                          @endif</div>
+                                      </div>
+
+                                      <div class="col-md-12 col-lg-12" id="alertMSG_{{$AssignContact->id}}">&nbsp;</div>
+                                    </div>
+                                  @endif
 
                                   <div class="col-md-2 col-lg-2" style="border:1px solid rgb(118, 118, 118);height: 270px;overflow: auto;"">
                                     {{--dd(@getFollowUpDTL($AssignContact->id))--}}

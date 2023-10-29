@@ -48,11 +48,11 @@
                             <h3 class="rate-percentage">{{@getNoOfTotalContactAdmin()}}</h3>
                             <div class="row">
                               <div class="col-md-6 col-lg-6">
-                                <p class="text-danger d-flex">{{--<i class="mdi mdi-menu-down">--}}</i><span>Unassign-{{@getNoOfTotalUnassignAdmin()}}</span></p>
+                                <p class="text-danger d-flex" title="Assign Contacts" style="cursor:pointer;">{{--<i class="mdi mdi-menu-down">--}}</i><span>{{@getNoOfTotalAssignAdmin()}}</span></p>
                               </div>
 
                               <div class="col-md-6 col-lg-6">
-                                <p class="text-success d-flex">{{--<i class="mdi mdi-menu-up">--}}</i><span>Assign-{{@getNoOfTotalAssignAdmin()}}</span></p>
+                                <p class="text-success d-flex" title="Unassign Contacts" style="cursor:pointer;">{{--<i class="mdi mdi-menu-up">--}}</i><span>{{@getNoOfTotalUnassignAdmin()}}</span></p>
                               </div>
                             </div>
                           </div>

@@ -100,8 +100,8 @@
                             <td>{{$datas->status}}</td>
                             <td>{{$datas->assigned_status}}</td>
                             <td>
-                              <a href="{{url('/admin/donot-call/approve-'.$datas->id)}}" title="Click for approve"><i class="mdi mdi-table-edit"></i></a>
-                              <a href="{{url('/admin/donot-call/reject-'.$datas->id)}}" title="Click for reject"><i class="mdi mdi-delete-forever"></i></a>
+                              <a href="{{url('/admin/donot-call/approve-'.$datas->id)}}" title="Click for approve"><i class="mdi mdi-thumb-up-outline"></i></a>
+                              <a href="{{url('/admin/donot-call/reject-'.$datas->id)}}" title="Click for reject"><i class="mdi mdi-thumb-down-outline"></i></a>
                             </td>
                           </tr>
                         @endforeach

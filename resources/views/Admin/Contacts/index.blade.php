@@ -3,6 +3,14 @@
 @section('title', 'Admin - All Contact')
 
 @section('styles')
+<style>
+  .doNotCall{
+    color: red;
+    border: 1px solid red;
+    border-radius: 50%;
+    background-color: red;
+  }
+</style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -25,7 +33,7 @@
                       @if(Session::has('Success'))<span id="Massage" style="color: green;" min-height="10px" max-height="10px"> &nbsp; {{Session::get('Success')}}</span>@endif
                     </div>
                     <div class="col-lg-3 col-md-3 col-3" style="text-align: right;">
-                      <button class="btn btn-success" title="Click for import excel" data-toggle="modal" data-target="#exampleModal"style="margin-top: -25px;padding: 1px 5px;">Import Excel</button>
+                      <button class="btn btn-success" title="Click for import excel" data-toggle="modal" data-target="#exampleModal"style="margin-top: -25px;padding: 1px 5px;">Import</button>
                       <a href="{{url('/admin/contacts/create')}}" title="Click for create page"><i class="mdi mdi-plus-box"></i></a>
                     </div>
                   </div>
@@ -108,17 +116,18 @@
                         @php($key=0)
                         @foreach($data as $datas)
                           <tr>
-                            <td>{{++$key}}</td>
-                            <td>{{$datas->name}}</td>
-                            <td>{{$datas->mobile}}</td>
-                            <td>{{$datas->email}}</td>
-                            <td>{{$datas->location}}</td>
-                            <td>{{$datas->contact_type}}</td>
-                            <td>{{$datas->source}}</td>
-                            <td>{{$datas->website}}</td>
-                            <td>{{$datas->additional_info}}</td>
-                            <td>{{$datas->status}}</td>
-                            <td>{{$datas->assigned_status}}</td>
+                          <!-- <tr style="background-color:red !important;"> -->
+                            <td><span @if($datas->donot_call=='A') title="Don't Call" style="cursor:pointer;" @endif>{{++$key}} @if($datas->donot_call=='A') <span class="doNotCall">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> @endif</span></td>
+                            <td><span @if($datas->donot_call=='A') title="Don't Call" style="cursor:pointer;" @endif>{{$datas->name}}</span></td>
+                            <td><span @if($datas->donot_call=='A') title="Don't Call" style="cursor:pointer;" @endif>{{$datas->mobile}}</span></td>
+                            <td><span @if($datas->donot_call=='A') title="Don't Call" style="cursor:pointer;" @endif>{{$datas->email}}</span></td>
+                            <td><span @if($datas->donot_call=='A') title="Don't Call" style="cursor:pointer;" @endif>{{$datas->location}}</span></td>
+                            <td><span @if($datas->donot_call=='A') title="Don't Call" style="cursor:pointer;" @endif>{{$datas->contact_type}}</span></td>
+                            <td><span @if($datas->donot_call=='A') title="Don't Call" style="cursor:pointer;" @endif>{{$datas->source}}</span></td>
+                            <td><span @if($datas->donot_call=='A') title="Don't Call" style="cursor:pointer;" @endif>{{$datas->website}}</span></td>
+                            <td><span @if($datas->donot_call=='A') title="Don't Call" style="cursor:pointer;" @endif>{{$datas->additional_info}}</span></td>
+                            <td><span @if($datas->donot_call=='A') title="Don't Call" style="cursor:pointer;" @endif>{{$datas->status}}</span></td>
+                            <td><span @if($datas->donot_call=='A') title="Don't Call" style="cursor:pointer;" @endif>{{$datas->assigned_status}}</span></td>
                             <td>
                               <a href="{{url('/admin/contacts/edit-'.$datas->id)}}"><i class="mdi mdi-table-edit"></i></a>
                               <a href="{{url('/admin/contacts/delete-'.$datas->id)}}"><i class="mdi mdi-delete-forever"></i></a>

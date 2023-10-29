@@ -88,12 +88,12 @@
                     <table class="table table-hover" id="">
                       <thead>
                         <tr>
-                          <th>Sr No.</th>
-                          <th>Name</th>
                           <th>
                             <input type="checkbox" id="assiged_check_all" onclick="assingContactAll()">
-                            Action
+                            {{--Action--}}
                           </th>
+                          <th>Sr No.</th>
+                          <th>Name</th>
                           <th>Mobile</th>
                           <th>Email</th>
                           <th>Location</th>
@@ -111,14 +111,14 @@
                       <tbody>
                         @php($key=0)
                         @foreach($data as $datas)
-                          <tr>
-                            <td>{{++$key}}</td>
-                            <td>{{$datas->name}}</td>
+                        <tr>
                             <td>
                               <input type="checkbox" class="assiged_check" id="assiged_check_{{$datas->id}}N" name="assiged_check[]" value="{{$datas->id}}" onclick="assingContact({{$datas->id}})">
                               <input type="hidden" name="contact_id[]"  value="{{$datas->id}}">
                               <input type="hidden" class="assiged_val" id="assiged_val_{{$datas->id}}" name="assiged_val[]" value="N" onclick="assingContact({{$datas->id}})">
                             </td>
+                            <td>{{++$key}}</td>
+                            <td>{{$datas->name}}</td>
                             <td>{{$datas->mobile}}</td>
                             <td>{{$datas->email}}</td>
                             <td><span title="{{$datas->location}}" style="cursor: pointer;">{{ substr($datas->location, 0,  35) }} @if(strlen($datas->location)>35) .... @endif</span></td>
